@@ -32,6 +32,32 @@
 
 > 环境检查脚本：`bash setup/check_env.sh`，一次打印上面这张表并实测连接。
 
+## 网络与推送（本机特有，别处可忽略）
+
+这台机器所在的网络里 **`github.com:443` 是连不上的**，但 `api.github.com` 和
+`ssh.github.com:443` 可达，所以本仓库的 `origin` 走的是 SSH over 443：
+
+```bash
+git remote -v
+# origin  ssh://git@ssh.github.com:443/CasomTheseus/database-systems-journey.git
+```
+
+```bash
+# 私钥在仓库之外，不会被误提交
+# /Users/casomthesus/资料/Code/.ssh_github/id_ed25519
+git config core.sshCommand
+```
+
+这把公钥已作为 **Deploy Key（write）** 加在本仓库上，所以只能推这一个仓库。
+以后想把 key 升级成账号级（能推所有仓库），把 `id_ed25519.pub` 贴到
+`https://github.com/settings/ssh/new` 即可，本地不用改任何配置。
+
+日常提交照旧：
+
+```bash
+git add -A && git commit -m "week01: 关系代数练习" && git push
+```
+
 ## 快速开始
 
 ```bash
