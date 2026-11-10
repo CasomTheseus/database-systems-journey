@@ -1,0 +1,13 @@
+.DS_Store
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.tmp
+!logs/*.md
+
+# 编辑器
+.idea/
+.vscode/
+*.swp
+*~
